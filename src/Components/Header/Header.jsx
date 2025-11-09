@@ -2,7 +2,7 @@ import React from 'react'
 import { GiNotebook } from "react-icons/gi";
 
 
-export default function Header() {
+export default function Header({notesCount}) {
   return (
     <div className=''>
       <div className='bg-white w-xl p-4 rounded-2xl'>        
@@ -11,7 +11,7 @@ export default function Header() {
             <span className='text-black font-serif text-2xl'>یادداشت های من</span>
           </div>
           <div className='flex items-center justify-center mt-4'>
-            <span>0</span>
+            <span className='font-serif'>{notesCount.toLocaleString('fa-IR')}</span>
             <span className='font-serif font-medium text-[18px]'> : تعداد یادداشت</span>
           </div>
       </div>

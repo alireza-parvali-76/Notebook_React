@@ -2,10 +2,9 @@ import React, {useState} from 'react'
 import { FaPlus } from "react-icons/fa";
 import Letters from '../Letters/Letters';
 
-export default function Main() {
-    const [title, setTitle] = useState('')
+export default function Main({ notes, setNotes }) {
+  const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
-  const [notes, setNotes] = useState([])
   const [editingNote, setEditingNote] = useState(null) // حالت ویرایش
 
   // افزودن یادداشت جدید
@@ -19,7 +18,7 @@ export default function Main() {
       id: Date.now(),
       title,
       content,
-      date: new Date().toLocaleDateString('fa-IR')
+     date: new Date().toLocaleDateString('fa-IR')
     }
 
     setNotes([...notes, newNote])
