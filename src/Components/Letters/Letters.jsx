@@ -3,13 +3,15 @@ import { MdModeEdit, MdDelete  } from "react-icons/md";
 
 export default function Letters({notes, onEdit, onDelete}) {
     if (!notes || notes.length === 0) {
-         <div className='flex items-center justify-center mt-10'>
-            <span className='font-serif text-white text-2xl'>!هنوز یادداشتی ندارید</span>
-        </div>
+        return(
+             <div className='flex items-center justify-center mt-10'>
+                <span className='font-serif text-white text-2xl'>!هنوز یادداشتی ندارید</span>
+            </div>
+        )
     }
   return (
     <div>
-        <div className='w-240 grid grid-cols-3 gap-3 mt-5'>
+        <div className='w-5xl grid grid-cols-3 gap-3 mt-5'>
            {notes.map((note) =>(
                  <div className='bg-white p-5 flex flex-col rounded-2xl'>
                     <div className='flex justify-between p-2.5 bg-blue-600 w-full rounded-2xl'>
@@ -17,7 +19,7 @@ export default function Letters({notes, onEdit, onDelete}) {
                             <span className='text-white text-[18px] cursor-pointer mr-2'
                             onClick={() => onDelete(note.id)}><MdDelete /></span>
                             <span className='text-white text-[18px] cursor-pointer'
-                            onClick={() => onEdit(note.id)}><MdModeEdit /></span>
+                            onClick={() => onEdit(note)}><MdModeEdit /></span>
                         </div>
                         <div>
                             <span className='font-serif'>{note.title}</span>

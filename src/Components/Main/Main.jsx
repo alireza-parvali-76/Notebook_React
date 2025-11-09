@@ -62,15 +62,15 @@ export default function Main() {
   }
   
   return (
-    <div>
-      <div className='w-140 bg-white mt-10 rounded-2xl'>
+    <div className='flex flex-col items-center'>
+      <div className='w-xl bg-white mt-10 rounded-2xl'>
         <div className='flex items-center justify-center p-3'>
           <input
             type="text"
             className='min-w-11/12 bg-blue-600 text-white p-2.5 text-right font-serif rounded-2xl mt-3'
             placeholder='...عنوان یادداشت'
-            onChange={(e) => setTitle(e.target.value)}
             value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
 
@@ -78,8 +78,8 @@ export default function Main() {
           <textarea
             className='min-w-11/12 bg-blue-600 text-white p-2.5 text-right font-serif rounded-2xl resize-none h-[90px]'
             placeholder='...متن یادداشت'
-            onChange={(e) => setContent(e.target.value)}
             value={content}
+            onChange={(e) => setContent(e.target.value)}
           ></textarea>
         </div>
 
