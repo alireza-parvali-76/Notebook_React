@@ -9,11 +9,17 @@ export default function Main({ notes, setNotes }) {
 
   // افزودن یادداشت جدید
   function addNote() {
-    if (title.trim() === '' || content.trim() === '') {
-      alert('لطفا عنوان و متن یادداشت را پر کنید');
-      return;
-    }
+    const trimmedTitle = title.trim()
+    const trimmedContent = content.trim()
 
+  // هیچ‌کدوم پر نیست
+  if (!trimmedTitle && !trimmedContent) return
+
+  // فقط محتوا پره ولی عنوان خالیه
+  if (!trimmedTitle && trimmedContent) {
+    alert('عنوان یادداشت باید وارد شود 📝')
+    return
+  }
     const newNote = {
       id: Date.now(),
       title,
@@ -68,6 +74,7 @@ export default function Main({ notes, setNotes }) {
             type="text"
             className='min-w-11/12 bg-blue-600 text-white p-2.5 text-right font-serif rounded-2xl mt-3'
             placeholder='...عنوان یادداشت'
+            onKeyDown={(e) => e.key === 'Enter' && addNote()}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
