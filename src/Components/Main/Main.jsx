@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FaPlus } from "react-icons/fa";
-import Letters from "../Notes/Notes";
+import Notes from "../Notes/Notes";
 
 export default function Main({ notes, setNotes }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [editingNote, setEditingNote] = useState(null); // حالت ویرایش
+
+  const endOfNotesRef = useRef(null);
 
   // افزودن یادداشت جدید
   function addNote() {
@@ -30,6 +32,10 @@ export default function Main({ notes, setNotes }) {
     setNotes([...notes, newNote]);
     setTitle("");
     setContent("");
+
+    setTimeout(() => {
+    endOfNotesRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   }
 
   // حذف یادداشت
@@ -93,6 +99,7 @@ export default function Main({ notes, setNotes }) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+          <div ref={endOfNotesRef} />
         </div>
 
         <div className="flex items-center justify-center p-3">
@@ -137,8 +144,8 @@ export default function Main({ notes, setNotes }) {
           )}
         </div>
       </div>
-      <div className="w-full max-w-4xl mt-8">
-        <Letters
+      <div className="w-full max-w-6xl mt-8 ">
+        <Notes
           notes={notes}
           onDelete={handleDeleteNote}
           onEdit={handleEditNote}
